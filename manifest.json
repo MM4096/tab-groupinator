@@ -1,0 +1,10 @@
+{
+	"description": "Create and load tab groups",
+	"manifest_version": 3,
+	"name": "Tab Groupinator",
+	"version": "1.0.0",
+	"homepage_url": "",
+	"icons": {
+		"48"
+	}
+}
