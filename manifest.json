@@ -3,8 +3,17 @@
 	"manifest_version": 3,
 	"name": "Tab Groupinator",
 	"version": "1.0.0",
-	"homepage_url": "",
+	"homepage_url": "https://google.com",
 	"icons": {
-		"48"
+		"48": "icons/tab-groupinator-48.png"
+	},
+	"permissions": [
+		"tabs",
+		"storage"
+	],
+	"action": {
+		"default_icon": "icons/tab-groupinator-48.png",
+		"default_title": "Tab Groupinator",
+		"default_popup": "popup/main_popup.html"
 	}
 }

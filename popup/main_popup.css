@@ -1,0 +1,46 @@
+body {
+	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.flex-row {
+	flex-direction: row;
+}
+
+.group {
+	padding: 5px;
+	border: 1px solid black;
+	border-radius: 10px;
+
+	margin-bottom: 10px;
+
+	flex-direction: row;
+
+	.group-button {
+		flex-grow: 1;
+	}
+
+	button {
+		background-color: white;
+		border: 1px solid black;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+	button:hover {
+		background-color: lightgray;
+	}
+}
+
+.linebreak {
+	margin-bottom: 10px;
+}
