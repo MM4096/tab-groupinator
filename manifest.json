@@ -15,5 +15,11 @@
 		"default_icon": "icons/tab-groupinator-48.png",
 		"default_title": "Tab Groupinator",
 		"default_popup": "popup/main_popup.html"
+	},
+
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "tab-groupinator@mm4096.com"
+		}
 	}
 }
