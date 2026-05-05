@@ -3,7 +3,7 @@
 	"manifest_version": 3,
 	"name": "Tab Groupinator",
 	"version": "1.0.0",
-	"homepage_url": "https://google.com",
+	"homepage_url": "https://github.com/MM4096/tab-groupinator",
 	"icons": {
 		"48": "icons/tab-groupinator-48.png"
 	},
