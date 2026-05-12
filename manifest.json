@@ -19,7 +19,10 @@
 
 	"browser_specific_settings": {
 		"gecko": {
-			"id": "tab-groupinator@mm4096.com"
+			"id": "tab-groupinator@mm4096.com",
+			"data_collection_permissions": {
+				"required": []
+			}
 		}
 	}
 }

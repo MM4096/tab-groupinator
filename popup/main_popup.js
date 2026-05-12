@@ -1,7 +1,7 @@
 let groups = [];
 
 async function loadGroups() {
-	groups = JSON.parse((await browser.storage.local.get("savedGroups"))["savedGroups"] || "[]")
+	groups = JSON.parse((await browser.storage.local.get("savedGroups"))["savedGroups"] || "[]");
 }
 
 async function saveGroups() {
@@ -32,11 +32,16 @@ async function openTablist(group_name) {
 		}
 		await browser.tabs.create({
 			url: tab_url,
-		})
+		});
 	}
 }
 
 function deleteGroup(group_name) {
+	const confirm_delete = confirm(`Delete "${group_name}"?`);
+	if (!confirm_delete) {
+		return;
+	}
+
 	groups = groups.filter((group) => group.name !== group_name);
 	saveGroups().then(() => {
 		reloadList().then();
@@ -57,19 +62,21 @@ async function reloadList() {
 		const load_button = $(`<button class="group-button">Open ${group_name}</button>`).on("click", () => {
 			openTablist(group_name);
 		});
+		const update_button = $(`<button class="update-button">Update</button>`).on("click", () => {
+			createGroup(group_name);
+		});
 		const delete_button = $(`<button class="delete-button">Delete</button>`).on("click", () => {
 			deleteGroup(group_name);
-		})
+		});
 		main_div.append(load_button);
+		main_div.append(update_button);
 		main_div.append(delete_button);
 		groups_container.append(main_div);
 	}
 }
 
-$("#create-group-button").on("click", async () => {
-	const group_name = $("#group-name-input").val();
+async function createGroup(group_name) {
 	const group_urls = (await getCurrentWindowData()).map((tab) => tab.url);
-
 	let updated = false;
 	for (let i = 0; i < groups.length; i++) {
 		if (groups[i].name === group_name) {
@@ -85,9 +92,14 @@ $("#create-group-button").on("click", async () => {
 		});
 	}
 
-	saveGroups().then(() => {
-		reloadList().then();
-	});
+	await saveGroups();
+	await reloadList();
+}
+
+$("#create-group-button").on("click", async () => {
+	const group_name = $("#group-name-input").val();
+
+	await createGroup(group_name);
 });
 
 $("#test").on("click", () => {
